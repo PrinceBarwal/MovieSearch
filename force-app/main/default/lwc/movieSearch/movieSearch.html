@@ -32,10 +32,28 @@
                     max="100"
                     step="1"
                     message-when-range-underflow="Munimum Value is 1"
-                    message-when-range-overflow="Maximum Value is 100"
-                    ></lightning-input>
+                    message-when-range-overflow="Maximum Value is 100"></lightning-input>
             </lightning-layout-item>
         </lightning-layout>
     </div>
     <!--Display Section-->
+    <template lwc:if={displaySearchResult}>
+        <div class="slds-var-m-top_large slds-scrollable_y displayStyle slds-box">
+            <lightning-layout
+                horizontal-align="center"
+                multiple-rows="true">
+                <template for:each={searchResult} for:item="searchItem">
+                    <lightning-layout-item
+                        size="3"
+                        padding="around_small"
+                        key={searchItem.imdbID}>
+                        <c-movie-tile movie={searchItem}
+                        selected-movie-id = {selectedmovie}
+                        onselectedmovie = {movieSelectedHandler}
+                        ></c-movie-tile>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </div>
+    </template>
 </template>
