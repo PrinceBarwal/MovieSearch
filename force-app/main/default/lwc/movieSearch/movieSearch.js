@@ -6,6 +6,7 @@ export default class MovieSearch extends LightningElement {
     loading = false;
     selectedPageNo = "1"; 
     delayTimeout;
+    searchResult = [];
 
     get typeOptions(){
         return [
@@ -40,6 +41,10 @@ export default class MovieSearch extends LightningElement {
         const res = await fetch(url);
         const data = await res.json();
         console.log("Movie Search Output", data);
+        this.loading = false;
+        if(data.Response === "True"){
+            this.searchResult = data.Search;
+        }
     }
 
 }
