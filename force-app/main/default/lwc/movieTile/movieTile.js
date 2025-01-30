@@ -16,7 +16,7 @@ export default class MovieTile extends LightningElement {
 
     get tileSelected(){
         //console.log(this.selectedMovieId, this.movie.imdbID);
-        return this.selectedMovieId === this.movie.imdbID 
+        return this.selectedMovieId === this.movie.imdbID
         ? "tile selected" 
         : "tile";
     }

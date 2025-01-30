@@ -48,7 +48,7 @@ export default class MovieSearch extends LightningElement {
     }
 
     movieSelectedHandler(event){
-        this.selectedmovie = this.detail; 
+        this.selectedMovie = event.detail; 
     }
 
     get displaySearchResult(){
