@@ -1,4 +1,7 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire} from 'lwc';
+// Import message service features required for publishing and the message channel
+import { publish, MessageContext } from 'lightning/messageService';
+import MOVIE_CHANNEL from '@salesforce/messageChannel/movieChannel__c';
 const DELAY = 300;
 export default class MovieSearch extends LightningElement {
     selectedType = "";
@@ -8,6 +11,10 @@ export default class MovieSearch extends LightningElement {
     delayTimeout;
     searchResult = [];
     selectedMovie = "";
+
+    @wire(MessageContext)
+    messageContext;
+
     get typeOptions(){
         return [
             {label : 'None', value : ''},
@@ -49,6 +56,10 @@ export default class MovieSearch extends LightningElement {
 
     movieSelectedHandler(event){
         this.selectedMovie = event.detail; 
+
+        const payload = { movieId: this.selectedMovie };
+
+        publish(this.messageContext, MOVIE_CHANNEL , payload);
     }
 
     get displaySearchResult(){

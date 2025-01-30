@@ -1,3 +1,14 @@
 <template>
-    
+    <template lwc:if={loadComponent}>
+        <div class="slds-var-p-around_small container">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-var-m-around_small movie-poster">
+                    <img src={movieDetails.Poster} alt="Image not Found" >
+                </div>
+                <div class="slds-col">
+                    <span>2</span>
+                </div>
+            </div>
+        </div>
+    </template>
 </template>
