@@ -49,7 +49,7 @@ export default class MovieDetail extends LightningElement {
     async fetchMovieDetail(movieId){
         let url = `https://www.omdbapi.com/?i=${movieId}&plot=full&apikey=28122ba`;
         const res = await fetch(url);
-        const data = res.json();
+        const data = await res.json();
         console.log("Movie Details",data);
         this.loadComponent = true;
         this.movieDetails = data;
